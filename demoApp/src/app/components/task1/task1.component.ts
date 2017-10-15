@@ -1,3 +1,4 @@
+import { Task1Service } from './../../services/task1.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Task1Component implements OnInit {
 
-  constructor() { }
+ inputString:string;
+ result: number;
+  
+  constructor(private task1Service: Task1Service) { }
 
   ngOnInit() {
   }
+
+  calculate(){
+    console.log(this.inputString);
+  }
+
+
 
 }

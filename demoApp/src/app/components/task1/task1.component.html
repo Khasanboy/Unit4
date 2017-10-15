@@ -1,3 +1,12 @@
-<p>
-  task1 works!
-</p>
+<h1>This task calculates the numbers or accounts entered to the textBox</h1>
+
+<form class="form-group">
+  <label for="inputString">Please enter the expression</label>
+  <input id="inputString" type="text" [(ngModel)]="inputString" name="inputString" placeholder="1+8*9" pattern="[a-zA-Z][a-zA-Z ]" required autofocus>
+  <button class="btn btn-default" (click)="calculate()">Calculate</button>
+  <div [hidden]="inputString.valid || inputString.pristine"
+  class="alert alert-danger">
+  <div [hidden]="!inputString.hasError('required')">Name is required</div>
+  <div [hidden]="!inputString.hasError('pattern')">Only alphabetsallowed</div>
+</div>
+</form>
