@@ -1,12 +1,18 @@
 <div class="container">
-  <h1>Enter the mathematical expression</h1>
-  <form (submit)=calculate()>
-    <div class="form-group">
-      <label for="inputString">Expression</label>
-      <textarea class="form-control" id="inputString" cols="8" rows="4" name="inputString" [(ngModel)]="inputString" required></textarea>
-    </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+  <form #form="ngForm" (submit)=calculate()>
+
+    <label for="inputString">Expression</label>
+    <textarea class="form-control" id="inputString" cols="8" rows="4" name="inputString" [(ngModel)]="inputString" required></textarea>
+    <br>
+    <br>
+    <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form.valid">Calculate</button>
+
+    <br>
+    <br>
+
+    <label for="inputString">Result</label>
+    <textarea class="form-control" id="outputString" cols="8" rows="4" name="outputString" [(ngModel)]="outputString"></textarea>
 
   </form>
 </div>

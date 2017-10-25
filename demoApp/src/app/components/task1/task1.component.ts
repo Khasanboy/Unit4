@@ -1,6 +1,6 @@
 import { Task1Service } from './../../services/task1.service';
 import { Component, OnInit } from '@angular/core';
-//import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-task1',
@@ -19,8 +19,8 @@ export class Task1Component implements OnInit {
   }
 
   calculate(){
-    if(this.task1Service.validate(this.inputString))
-    console.log(this.inputString);
+    this.task1Service.validate(this.inputString)
+    //console.log(this.inputString);
   }
 
 
