@@ -1,3 +1,12 @@
+
+<popup (confirmClick)="confirmEvent()" (cancelClick)="cancelEvent()">
+  <form #dialogForm="ngForm">
+    Enter the value for 
+    <!--<label for="refVal" id="labelForRef" name="labelForRef" [(ngModel)]="labelForRef"></label> -->
+    <input type="number" id="refVal" name="refVal" [(ngModel)]="refVal">
+  </form>
+</popup>
+
 <div class="container">
 
   <form #form="ngForm" (submit)=calculate()>

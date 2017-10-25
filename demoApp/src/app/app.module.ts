@@ -1,8 +1,8 @@
-import { Task1Service } from './services/task1.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { PopupModule } from 'ng2-opd-popup';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -11,6 +11,7 @@ import { Task2Component } from './components/task2/task2.component';
 import { Task3Component } from './components/task3/task3.component';
 import { Task4Component } from './components/task4/task4.component';
 
+import { Task1Service } from './services/task1.service';
 
 const appRoutes: Routes = [
   {path:'', component:Task1Component},
@@ -20,6 +21,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    PopupModule.forRoot()
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -28,11 +35,7 @@ const appRoutes: Routes = [
     Task3Component,
     Task4Component
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+ 
   providers: [Task1Service],
   bootstrap: [AppComponent]
 })

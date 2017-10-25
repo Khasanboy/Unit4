@@ -5,37 +5,58 @@ export class Task1Service {
 
   constructor() { }
 
-  validate(input:string){
-  
-    let trimmed:string = input.replace(/\s/g,'').replace(/\n/g,'').trim();
+  validate(input: string) {
 
-    if(trimmed && !(/[^0-9\-\+\/\*\!\a\.]/g.test(trimmed))){
+    let trimmed: string = input.replace(/\s/g, '').replace(/\n/g, '').trim();
 
-    let splitString:string[] = trimmed.split(/[\+\/\-\*]/);
-    
-    for(let i=0; i<splitString.length; i++){
+    if (trimmed && !(/[^0-9\-\+\/\*\!\a\.]/g.test(trimmed))) {
 
-      if(splitString[i].indexOf('a')!=-1||splitString[i].indexOf('!')!=-1){
+      let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
 
-          if(!(splitString[i].lastIndexOf('a')== 0 && splitString[i].lastIndexOf('!')==1))
-              
-          return false;
-        
+      for (let i = 0; i < splitString.length; i++) {
+
+        if (splitString[i].indexOf('a') != -1 || splitString[i].indexOf('!') != -1) {
+
+          if (!(splitString[i].lastIndexOf('a') == 0 && splitString[i].lastIndexOf('!') == 1))
+
+            return false;
+
+        }
+
       }
-     
-    }
-    
-     return true;
+
+      return true;
 
     }
 
     return false;
-  
+
   }
 
-  calculate(input:string){
+  getValue(input: string) {
 
-    let splitString:string[] = input.split(/[\+\/\-\*]/);
+    if (input) {
+      let trimmed: string = input.replace(/\s/g, '').replace(/\n/g, '').trim();
+      let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
+
+      let refString:string[] = [];
+
+      for (let i = 0; i < splitString.length; i++) {
+
+        if (splitString[i].indexOf('a') != -1) {
+
+          refString.push()
+
+        }
+
+      }
+    }
+
+  }
+
+  calculate(input: string) {
+
+    let splitString: string[] = input.split(/[\+\/\-\*]/);
 
 
 
