@@ -57,7 +57,7 @@ export class Task1Component implements OnInit {
         }
       }
       else{
-        this.flashMessage.show("You didn't anter valid input only 0-9, -, +, /, *, !, a  characters are allowed",  {cssClass: 'alert-danger', timeout:3000});
+        this.flashMessage.show("You didn't anter valid input only 0-9, -, +, /, *, !, a  characters are allowed a! must be followed by number",  {cssClass: 'alert-danger', timeout:3000});
       }
 
   }

@@ -15,9 +15,9 @@ export class Task1Service {
 
       for (let i = 0; i < splitString.length; i++) {
 
-        if (splitString[i].indexOf('a') != -1 || splitString[i].indexOf('!') != -1) {
+        if (splitString[i].indexOf('a') != -1 || splitString[i].indexOf('!') != -1 ) {
 
-          if (!(splitString[i].lastIndexOf('a') == 0 && splitString[i].lastIndexOf('!') == 1))
+          if (!(splitString[i].lastIndexOf('a') == 0 && splitString[i].lastIndexOf('!') == 1) || splitString[i].length==2)
 
             return false;
 
