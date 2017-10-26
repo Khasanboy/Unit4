@@ -1,3 +1,18 @@
-<p>
-  task2 works!
-</p>
+<div class="container">
+
+  <form #form2="ngForm" (submit)=sortNumbers()>
+
+    <label for="numbersString">Numbers</label>
+    <textarea class="form-control" id="numbersString" cols="8" rows="4" name="numbersString" [(ngModel)]="numbersString" required></textarea>
+    <br>
+    <br>
+    <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form2.valid">Sort</button>
+
+    <br>
+    <br>
+
+    <label for="sortedNumbers">Sorted Numbers</label>
+    <textarea class="form-control" id="sortedNumbers" cols="8" rows="4" name="sortedNumbers" [(ngModel)]="sortedNumbers"></textarea>
+
+  </form>
+</div>

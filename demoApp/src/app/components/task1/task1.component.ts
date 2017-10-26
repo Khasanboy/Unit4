@@ -30,7 +30,7 @@ export class Task1Component implements OnInit {
     this.refObjs=[];
     let k = 0;
 
-    if(this.inputString && this.task1Service.validate(this.inputString)){
+    if(this.inputString && this.task1Service.validate(this.inputString)){ //Validating the input
 
         let trimmed: string = this.inputString.replace(/\s/g, '').replace(/\n/g, '').trim();
         let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
@@ -39,7 +39,7 @@ export class Task1Component implements OnInit {
   
           if (splitString[i].indexOf('a') != -1) {
 
-            this.refObjs.push(new refObj(k, i, splitString[i], splitString[i]));
+            this.refObjs.push(new refObj(k, splitString[i], splitString[i]));
             k++;
           }
   
@@ -50,7 +50,7 @@ export class Task1Component implements OnInit {
         }
         else{
           this.result=eval(trimmed);
-          if(this.result == Infinity || isNaN(this.result)){
+          if(this.result == Infinity || this.result == -Infinity || isNaN(this.result)){
             this.result=null;
             this.flashMessage.show("Zero division is not allowed",  {cssClass: 'alert-danger', timeout:3000})
           }
@@ -71,7 +71,7 @@ export class Task1Component implements OnInit {
      output = output.replace(this.refObjs[j].oldValue, this.refObjs[j].value);
 
     this.result = eval(output);
-    if(this.result == Infinity || isNaN(this.result)){
+    if(this.result == Infinity || this.result == -Infinity || isNaN(this.result)){
       this.result=null;
       this.flashMessage.show("Zero division is not allowed",  {cssClass: 'alert-danger', timeout:3000})
     }
@@ -87,13 +87,11 @@ export class Task1Component implements OnInit {
 
 class refObj{
   public id:number;
-  public index:number;
   public value:any;
   public oldValue:any;
 
-  constructor(id, index, value, oldValue){
+  constructor(id, value, oldValue){
     this.id = id;
-    this.index = index;
     this.value = value;
     this.oldValue = oldValue;
   }

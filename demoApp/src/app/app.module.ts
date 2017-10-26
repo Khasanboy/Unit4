@@ -13,6 +13,7 @@ import { Task3Component } from './components/task3/task3.component';
 import { Task4Component } from './components/task4/task4.component';
 
 import { Task1Service } from './services/task1.service';
+import { Task2Service } from './services/task2.service';
 
 const appRoutes: Routes = [
   {path:'', component:Task1Component},
@@ -22,13 +23,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    FlashMessagesModule,
-    RouterModule.forRoot(appRoutes),
-    PopupModule.forRoot()
-  ],
+  
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -37,8 +32,15 @@ const appRoutes: Routes = [
     Task3Component,
     Task4Component
   ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    FlashMessagesModule,
+    RouterModule.forRoot(appRoutes),
+    PopupModule.forRoot()
+  ],
  
-  providers: [Task1Service],
+  providers: [Task1Service, Task2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
