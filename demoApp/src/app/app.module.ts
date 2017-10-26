@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { PopupModule } from 'ng2-opd-popup';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    FlashMessagesModule,
     RouterModule.forRoot(appRoutes),
     PopupModule.forRoot()
   ],

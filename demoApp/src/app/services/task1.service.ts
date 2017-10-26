@@ -9,7 +9,7 @@ export class Task1Service {
 
     let trimmed: string = input.replace(/\s/g, '').replace(/\n/g, '').trim();
 
-    if (trimmed && !(/[^0-9\-\+\/\*\!\a\.]/g.test(trimmed))) {
+    if (trimmed && !(/[^0-9\-\+\/\*\!\a]/g.test(trimmed))) {
 
       let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
 
@@ -30,35 +30,6 @@ export class Task1Service {
     }
 
     return false;
-
-  }
-
-  getValue(input: string) {
-
-    if (input) {
-      let trimmed: string = input.replace(/\s/g, '').replace(/\n/g, '').trim();
-      let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
-
-      let refString:string[] = [];
-
-      for (let i = 0; i < splitString.length; i++) {
-
-        if (splitString[i].indexOf('a') != -1) {
-
-          refString.push()
-
-        }
-
-      }
-    }
-
-  }
-
-  calculate(input: string) {
-
-    let splitString: string[] = input.split(/[\+\/\-\*]/);
-
-
 
   }
 

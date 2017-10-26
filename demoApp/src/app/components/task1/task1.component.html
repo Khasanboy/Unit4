@@ -1,9 +1,10 @@
 
 <popup (confirmClick)="confirmEvent()" (cancelClick)="cancelEvent()">
   <form #dialogForm="ngForm">
-    Enter the value for 
-    <!--<label for="refVal" id="labelForRef" name="labelForRef" [(ngModel)]="labelForRef"></label> -->
-    <input type="number" id="refVal" name="refVal" [(ngModel)]="refVal">
+    <div *ngFor="let refObj of refObjs; let idx = index">
+      <label for="{{refObj.id}}"> Enter the value for {{refObj.oldValue.substring(2)}}</label>
+      <input type="number" name="{{refObj.id}}" [(ngModel)]="refObjs[idx].value">
+    </div>
   </form>
 </popup>
 
@@ -20,8 +21,8 @@
     <br>
     <br>
 
-    <label for="inputString">Result</label>
-    <textarea class="form-control" id="outputString" cols="8" rows="4" name="outputString" [(ngModel)]="outputString"></textarea>
+    <label for="result">Result</label>
+    <textarea class="form-control" id="result" cols="8" rows="4" name="result" [(ngModel)]="result"></textarea>
 
   </form>
 </div>
