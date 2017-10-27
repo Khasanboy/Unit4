@@ -10,7 +10,7 @@ import {Task2Service} from './../../services/task2.service';
 export class Task2Component implements OnInit {
 
   numbersString: string;
-  sortedNumbers: number[];
+  sortedNumbers: string;
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -23,14 +23,29 @@ export class Task2Component implements OnInit {
   sortNumbers(){
     if(this.task2Service.validateInput(this.numbersString)){
       let numArray:number[] = [];
-      let splitString: string[] = this.numbersString.split(/\s/);
+      let trimmed = this.numbersString.trim().replace(/\s+/, ' ')
+      let splitString: string[] = trimmed.split(' ');
+
+      for(let i = 0; i<splitString.length; i++){
+        if(splitString[i]=="")
+          splitString.splice(i, 1);
+      }
       
-      splitString.forEach(s=>numArray.push(parseFloat(s)));
+      splitString.forEach(s=>numArray.push(this.task2Service.parseInput(s)));
 
       numArray.sort(this.task2Service.compare);
 
-      console.log(numArray);
+      let output:string = '';
 
+      for(let i = 0; i<numArray.length; i++){
+       
+        output+=numArray[i].toLocaleString()+' '
+      }
+
+      this.sortedNumbers = output;
+
+    }else{
+      this.flashMessage.show("You didn't anter valid input only 0-9,. characters are allowed ",  {cssClass: 'alert-danger', timeout:3000});
     }
     
   }
