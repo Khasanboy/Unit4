@@ -22,7 +22,9 @@ export class Task2Component implements OnInit {
 
   sortNumbers(){
     if(this.task2Service.validateInput(this.numbersString)){
+
       let numArray:number[] = [];
+
       let trimmed = this.numbersString.trim().replace(/\s+/, ' ')
       let splitString: string[] = trimmed.split(' ');
 
@@ -45,7 +47,7 @@ export class Task2Component implements OnInit {
       this.sortedNumbers = output;
 
     }else{
-      this.flashMessage.show("You didn't anter valid input only 0-9,. characters are allowed ",  {cssClass: 'alert-danger', timeout:3000});
+      this.flashMessage.show("You didn't enter valid input only 0-9,. characters are allowed ",  {cssClass: 'alert-danger', timeout:3000});
     }
     
   }

@@ -1,3 +1,63 @@
-<p>
-  task3 works!
-</p>
+<div class="container">
+    
+      <form #form="ngForm" (submit)=calculate()>
+
+        <div>
+          <h3>First rectangle elements</h3>
+          <br>
+          <div class="form-group row">
+              <div class="col-xs-2">
+                  <label for="firstX">X position</label>
+                  <input class="form-control input-sm" type="number" id="firstX" name="firstX" [(ngModel)]="firstX" required>
+              </div>
+              <div class="col-xs-2">
+                  <label for="firstY">Y position</label>
+                  <input class="form-control  input-sm" type="number" id="firstY"  name="firstY" [(ngModel)]="firstY" required>
+              </div>
+              <div class="col-xs-2">
+                  <label for="firstWidth">Width</label>
+                  <input class="form-control  input-sm" type="number" id="firstWidth"  name="firstWidth" [(ngModel)]="firstWidth" required>
+              </div>
+              <div class="col-xs-2">
+                  <label for="firstHeight">Height</label>
+                  <input class="form-control  input-sm" type="number" id="firstHeight"  name="firstHeight" [(ngModel)]="firstHeight" required>
+              </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div>
+            <h3>Second rectangle elements</h3>
+            <br>
+            <div class="form-group row">
+                <div class="col-xs-2">
+                    <label for="secondX">X position</label>
+                    <input class="form-control input-sm" type="number" id="secondX"  name="secondX" [(ngModel)]="secondX" required>
+                </div>
+                <div class="col-xs-2">
+                    <label for="secondY">Y position</label>
+                    <input class="form-control input-sm" type="number" id="secondY"  name="secondY" [(ngModel)]="secondY" required>
+                </div>
+                <div class="col-xs-2">
+                    <label for="secondWidth">Width</label>
+                    <input class="form-control input-sm" type="number" id="secondWidth"  name="secondWidth" [(ngModel)]="secondWidth" required>
+                </div>
+                <div class="col-xs-2">
+                    <label for="secondHeight">Height</label>
+                    <input class="form-control input-sm" type="number" id="secondHeight"  name="secondHeight" [(ngModel)]="secondHeight" required>
+                </div>
+              </div>
+          </div>
+    
+        
+        <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form.valid">Calculate</button>
+    
+        <br>
+        <br>
+    
+        <label for="result">Overlap area</label>
+        <textarea class="form-control" id="result" cols="9" rows="4" name="result" [(ngModel)]="result"></textarea>
+    
+      </form>
+    </div>
