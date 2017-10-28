@@ -9,7 +9,7 @@ export class Task2Service {
 
     //let trimmed: string = input.replace(/\s/g, ' ').replace(/\n/g, ' ').trim(); // To be sure that tabs or new line chars are also replaced to space
 
-    if (!(/[^0-9,.\s]/g.test(input))) {
+    if (!(/[^0-9,.+-\s]/g.test(input))) {
       return true;
 
     }else{

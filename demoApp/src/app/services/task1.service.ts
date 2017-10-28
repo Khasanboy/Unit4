@@ -7,29 +7,32 @@ export class Task1Service {
 
   validate(input: string) {
 
-    let trimmed: string = input.replace(/\s/g, '').replace(/\n/g, '').trim();
+    if (input && !(/[^0-9\-\+\/\*\!\a\.]/g.test(input))) {
 
-    if (trimmed && !(/[^0-9\-\+\/\*\!\a]/g.test(trimmed))) {
-
-      let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
+      let splitString: string[] = input.split(/[\+\/\-\*]/);
 
       for (let i = 0; i < splitString.length; i++) {
 
-        if (splitString[i].indexOf('a') != -1 || splitString[i].indexOf('!') != -1 ) {
+        if (/^0\d+/.test(splitString[i].toString())) { //checking for octal numbers ex 00000
+          return false;
+        }
 
-          if (!(splitString[i].lastIndexOf('a') == 0 && splitString[i].lastIndexOf('!') == 1) || splitString[i].length==2)
+        if (splitString[i].indexOf('a') != -1 || splitString[i].indexOf('!') != -1) {
 
+          if (splitString[i].lastIndexOf('a') != 0 || splitString[i].lastIndexOf('!') != 1 || splitString[i].length == 2) {
             return false;
+          }
 
         }
 
       }
 
       return true;
-
     }
 
-    return false;
+    else {
+      return false;
+    }
 
   }
 

@@ -1,20 +1,30 @@
 <div class="container">
 
-  <h3>Only local format numbers are allowed</h3>
+  <div class="col-sm-offset-2 col-sm-10">
+    <h5 style="color:blue">It is assumed that only numbers in local format entered</h5>
+  </div>
 
-  <form #form2="ngForm" (submit)=sortNumbers()>
+  <form class="form-horizontal" #form2="ngForm" (submit)=sortNumbers()>
 
-    <label for="numbersString">Numbers</label>
-    <textarea class="form-control" id="numbersString" cols="8" rows="4" name="numbersString" [(ngModel)]="numbersString" required></textarea>
-    <br>
-    <br>
-    <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form2.valid">Sort</button>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="numbersString">Numbers</label>
+      <div class="col-sm-10">
+        <textarea id="numbersString" rows="4" cols="50" name="numbersString" [(ngModel)]="numbersString" required></textarea>
+      </div>
+    </div>
 
-    <br>
-    <br>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form2.valid">Sort</button>
+      </div>
+    </div>
 
-    <label for="sortedNumbers">Sorted Numbers</label>
-    <textarea class="form-control" id="sortedNumbers" cols="8" rows="4" name="sortedNumbers" [(ngModel)]="sortedNumbers"></textarea>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="sortedNumbers">Sorted Numbers</label>
+      <div class="col-sm-10">
+        <textarea disabled id="sortedNumbers" rows="4" cols="50" name="sortedNumbers" [(ngModel)]="sortedNumbers"></textarea>
+      </div>
+    </div>
 
   </form>
 </div>

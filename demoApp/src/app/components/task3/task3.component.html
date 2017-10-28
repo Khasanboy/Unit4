@@ -1,63 +1,75 @@
 <div class="container">
-    
-      <form #form="ngForm" (submit)=calculate()>
 
-        <div>
-          <h3>First rectangle elements</h3>
-          <br>
-          <div class="form-group row">
-              <div class="col-xs-2">
-                  <label for="firstX">X position</label>
-                  <input class="form-control input-sm" type="number" id="firstX" name="firstX" [(ngModel)]="firstX" required>
-              </div>
-              <div class="col-xs-2">
-                  <label for="firstY">Y position</label>
-                  <input class="form-control  input-sm" type="number" id="firstY"  name="firstY" [(ngModel)]="firstY" required>
-              </div>
-              <div class="col-xs-2">
-                  <label for="firstWidth">Width</label>
-                  <input class="form-control  input-sm" type="number" id="firstWidth"  name="firstWidth" [(ngModel)]="firstWidth" required>
-              </div>
-              <div class="col-xs-2">
-                  <label for="firstHeight">Height</label>
-                  <input class="form-control  input-sm" type="number" id="firstHeight"  name="firstHeight" [(ngModel)]="firstHeight" required>
-              </div>
+    <form class="form-horizontal col-xs-10" style="text-align: left" #form="ngForm" (submit)=calculate()>
+
+        <div class="form-group row">
+            <br>
+            <h3 style="color:green">First rectangle attributes</h3>
+            <br>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="firstWidth">Width</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="firstWidth" name="firstWidth" [(ngModel)]="firstWidth" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="firstHeight">Height</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="firstHeight" name="firstHeight" [(ngModel)]="firstHeight" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="firstX">TopLeftX</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="firstX" name="firstX" [(ngModel)]="firstX" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="firstY">TopLeftY</label>
+                <div class="col-sm-8">
+                    <input class=" form-control input-sm" type="number" id="firstY" name="firstY" [(ngModel)]="firstY" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <br>
+            <h3 style="color:green">Second rectangle attributes</h3>
+            <br>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="secondWidth">Width</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="secondWidth" name="secondWidth" [(ngModel)]="secondWidth" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="secondHeight">Height</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="secondHeight" name="secondHeight" [(ngModel)]="secondHeight" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="secondX">TopLeftX</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="secondX" name="secondX" [(ngModel)]="secondX" required>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <label class="control-label col-sm-4" for="secondY">TopLeftY</label>
+                <div class="col-sm-8">
+                    <input class="form-control input-sm" type="number" id="secondY" name="secondY" [(ngModel)]="secondY" required>
+                </div>
             </div>
         </div>
 
-        <br>
-
-        <div>
-            <h3>Second rectangle elements</h3>
-            <br>
-            <div class="form-group row">
-                <div class="col-xs-2">
-                    <label for="secondX">X position</label>
-                    <input class="form-control input-sm" type="number" id="secondX"  name="secondX" [(ngModel)]="secondX" required>
-                </div>
-                <div class="col-xs-2">
-                    <label for="secondY">Y position</label>
-                    <input class="form-control input-sm" type="number" id="secondY"  name="secondY" [(ngModel)]="secondY" required>
-                </div>
-                <div class="col-xs-2">
-                    <label for="secondWidth">Width</label>
-                    <input class="form-control input-sm" type="number" id="secondWidth"  name="secondWidth" [(ngModel)]="secondWidth" required>
-                </div>
-                <div class="col-xs-2">
-                    <label for="secondHeight">Height</label>
-                    <input class="form-control input-sm" type="number" id="secondHeight"  name="secondHeight" [(ngModel)]="secondHeight" required>
-                </div>
-              </div>
-          </div>
-    
-        
-        <button style="text-align: center;" type="submit" class="btn btn-success" [disabled]="!form.valid">Calculate</button>
-    
-        <br>
-        <br>
-    
-        <label for="result">Overlap area</label>
-        <textarea class="form-control" id="result" cols="9" rows="4" name="result" [(ngModel)]="result"></textarea>
-    
-      </form>
+        <div class="form-group" style="margin:50px 20px 50px 0">
+            <button style="text-align: center; float: right" type="submit" class="btn btn-success" [disabled]="!form.valid">Calculate ovrlap area</button>
+        </div>
+    </form>
+    <div class="col-xs-10">
+        <label class="control-label col-sm-2"  for="result">Overlap area</label>
+        <div class="col-sm-10">
+            <textarea disabled  rows="2" style="width:100%" id="result" name="result" [(ngModel)]="result"></textarea>
+        </div>
     </div>
+</div>
