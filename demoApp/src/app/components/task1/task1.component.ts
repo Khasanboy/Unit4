@@ -47,7 +47,7 @@ export class Task1Component implements OnInit {
 
       let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
 
-      splitString.forEach((s, x)=>s==""?splitString.splice(x, 1):null);
+      splitString.forEach((s, x)=>s==""?splitString.splice(x, 1):null); //Deleting empty string element of array
 
       for (let i = 0; i < splitString.length; i++) {
 
@@ -71,7 +71,7 @@ export class Task1Component implements OnInit {
       }
     }
     else {
-      this.flashMessage.show("You didn't anter valid input only 0-9, -, +, /, *, !, a  characters are allowed a! must be followed by number", { cssClass: 'alert-danger', timeout: 2000 });
+      this.flashMessage.show(this.task1Service.message, { cssClass: 'alert-danger', timeout: 2000 });
     }
 
   }

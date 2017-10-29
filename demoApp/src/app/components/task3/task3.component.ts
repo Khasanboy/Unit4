@@ -29,10 +29,16 @@ export class Task3Component implements OnInit {
 
   calculate(){
 
-    let rectangle1 = new Rectangle(this.firstX, this.firstY, this.firstWidth, this.firstHeight);
-    let rectangle2 = new Rectangle(this.secondX, this.secondY, this.secondWidth, this.secondHeight);
-
-    this.result = this.task3Service.calculate(rectangle1, rectangle2);
+    if(this.task3Service.validate(this.firstWidth, this.firstHeight, this.secondWidth, this.secondHeight)){
+      
+      let rectangle1 = new Rectangle(this.firstX, this.firstY, this.firstWidth, this.firstHeight);
+      let rectangle2 = new Rectangle(this.secondX, this.secondY, this.secondWidth, this.secondHeight);
+  
+      this.result = this.task3Service.calculate(rectangle1, rectangle2);
+    }
+    else{
+      this.flashMessage.show("Width or height of a rectangle can't be minus or 0",  {cssClass: 'alert-danger', timeout:2000})
+    }
 
   }
 
