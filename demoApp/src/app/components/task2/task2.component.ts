@@ -47,7 +47,7 @@ export class Task2Component implements OnInit {
       this.sortedNumbers = output;
 
     }else{
-      this.flashMessage.show("You didn't enter valid input only 0-9,. characters are allowed ",  {cssClass: 'alert-danger', timeout:2000});
+      this.flashMessage.show(this.task2Service.message,  {cssClass: 'alert-danger', timeout:2000});
     }
     
   }

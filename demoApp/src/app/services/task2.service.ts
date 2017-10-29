@@ -2,18 +2,26 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Task2Service {
+  
+  message='';
 
   constructor() { }
 
   validateInput(input: string) {
-
-    //let trimmed: string = input.replace(/\s/g, ' ').replace(/\n/g, ' ').trim(); // To be sure that tabs or new line chars are also replaced to space
+    
+    this.message='';
 
     if (!(/[^0-9,.+-\s]/g.test(input))) {
+      if(/\+\+*\+|\-\-*\-/g.test(input)){
+        
+        this.message='Input has double or more math operator repeated'
+        return false
+      }
       return true;
 
     }else{
-
+    
+    this.message='Not valid input, only 0-9,. characters are allowed';
     return false;
     }
 

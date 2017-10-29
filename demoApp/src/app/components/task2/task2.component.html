@@ -4,12 +4,12 @@
     <h5 style="color:blue">It is assumed that only numbers in local format entered</h5>
   </div>
 
-  <form class="form-horizontal" #form2="ngForm" (submit)=sortNumbers()>
+  <form class="form-horizontal" #form2="ngForm" (submit)="sortNumbers()" autocomplete="off">
 
     <div class="form-group">
       <label class="control-label col-sm-2" for="numbersString">Numbers</label>
       <div class="col-sm-10">
-        <textarea id="numbersString" rows="4" cols="50" name="numbersString" [(ngModel)]="numbersString" required></textarea>
+        <textarea  style="resize:none" id="numbersString" rows="4" cols="50" name="numbersString" [(ngModel)]="numbersString" required></textarea>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="sortedNumbers">Sorted Numbers</label>
       <div class="col-sm-10">
-        <textarea disabled id="sortedNumbers" rows="4" cols="50" name="sortedNumbers" [(ngModel)]="sortedNumbers"></textarea>
+        <textarea disabled  style="resize:none" id="sortedNumbers" rows="4" cols="50" name="sortedNumbers" [(ngModel)]="sortedNumbers"></textarea>
       </div>
     </div>
 

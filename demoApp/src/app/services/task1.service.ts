@@ -12,6 +12,11 @@ export class Task1Service {
 
     if (input && !(/[^0-9\-\+\/\*\!\a\.]/g.test(input))) {
 
+      if(/\+\+*\+|\-\-*\-|\*\**\*|\/\/*\/|\-\*|\+\/|\-\/|\+\*/g.test(input)){
+          this.message = "input has 2 or more math operator repeated"
+          return false;
+      }
+
       let splitString: string[] = input.split(/[\+\/\-\*]/);
 
       splitString.forEach((s, x)=>s==""?splitString.splice(x, 1):null); //Deleting empty string element of array

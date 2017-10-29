@@ -6,7 +6,7 @@ export class Task3Service {
   constructor() { }
 
   validate(firstWidth, firstHeight, secondWidth, secondHeight){
-    if(firstWidth>=0 || firstHeight>=0 || secondWidth>=0 || secondHeight >=0)
+    if(firstWidth<=0 || firstHeight<=0 || secondWidth<=0 || secondHeight <=0)
       return false;
     return true;
   }
