@@ -37,7 +37,7 @@ export class Task3Component implements OnInit {
       this.result = this.task3Service.calculate(rectangle1, rectangle2);
     }
     else{
-      this.flashMessage.show("Width or height of a rectangle can't be minus or 0",  {cssClass: 'alert-danger', timeout:2000})
+      this.flashMessage.show("Width or height of a rectangle can't be minus or 0",  {cssClass: 'alert-danger', timeout:3000})
     }
 
   }

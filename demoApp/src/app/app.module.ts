@@ -15,6 +15,7 @@ import { Task4Component } from './components/task4/task4.component';
 import { Task1Service } from './services/task1.service';
 import { Task2Service } from './services/task2.service';
 import {Task3Service} from './services/task3.service';
+import {Task4Service} from './services/task4.service';
 
 const appRoutes: Routes = [
   {path:'', component:Task1Component},
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     PopupModule.forRoot()
   ],
  
-  providers: [Task1Service, Task2Service, Task3Service],
+  providers: [Task1Service, Task2Service, Task3Service, Task4Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

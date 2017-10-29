@@ -1,7 +1,7 @@
 package com.unit4.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.YearMonth;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Period implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private Date period;
+	private YearMonth period;
 	
 	private Set<Currency> currencies;
 
@@ -28,7 +28,7 @@ public class Period implements Serializable {
 		super();
 	}
 
-	public Period(Date period, Set<Currency> currencies) {
+	public Period(YearMonth period, Set<Currency> currencies) {
 		super();
 		this.period = period;
 		this.currencies = currencies;
@@ -42,11 +42,11 @@ public class Period implements Serializable {
 		this.id = id;
 	}
 
-	public Date getPeriod() {
+	public YearMonth getPeriod() {
 		return period;
 	}
 
-	public void setPeriod(Date period) {
+	public void setPeriod(YearMonth period) {
 		this.period = period;
 	}
 

@@ -19,18 +19,21 @@ public class Currency implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String title;
+	private String code;
 	
 	private BigDecimal rate;
+	
+	private boolean isBase;
 
 	public Currency() {
 		super();
 	}
 
-	public Currency(String title, BigDecimal rate) {
+	public Currency(String code, BigDecimal rate, boolean isBase) {
 		super();
-		this.title = title;
+		this.code = code;
 		this.rate = rate;
+		this.isBase = isBase;
 	}
 
 	public Long getId() {
@@ -41,12 +44,12 @@ public class Currency implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getCode() {
+		return code;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setCode(String title) {
+		this.code = title;
 	}
 
 	public BigDecimal getRate() {
@@ -56,8 +59,14 @@ public class Currency implements Serializable {
 	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
-	
-	
+
+	public boolean isBase() {
+		return isBase;
+	}
+
+	public void setBase(boolean isBase) {
+		this.isBase = isBase;
+	}
 	
 	
 

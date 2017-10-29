@@ -47,7 +47,9 @@ export class Task2Component implements OnInit {
       this.sortedNumbers = output;
 
     }else{
-      this.flashMessage.show(this.task2Service.message,  {cssClass: 'alert-danger', timeout:2000});
+      this.flashMessage.show(this.task2Service.message,  {cssClass: 'alert-danger', timeout:3000});
+      this.numbersString = null;
+      this.sortedNumbers = null;
     }
     
   }

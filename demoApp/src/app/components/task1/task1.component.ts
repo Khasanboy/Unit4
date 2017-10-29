@@ -1,8 +1,6 @@
 import { Task1Service } from './../../services/task1.service';
 import { Component, OnInit } from '@angular/core';
 import { Popup } from 'ng2-opd-popup';
-import { ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -27,12 +25,11 @@ export class Task1Component implements OnInit {
       color: "#5cb85c",
       widthProsentage: 40,
       animationDuration: 1,
-      showButtons: false, 
+      showButtons: false,
       animation: "fadeInDown"
-  };
-   
-    this.popup.show(this.popup.options);
-   }
+    };
+
+  }
 
   ngOnInit() {
   }
@@ -47,7 +44,7 @@ export class Task1Component implements OnInit {
 
       let splitString: string[] = trimmed.split(/[\+\/\-\*]/);
 
-      splitString.forEach((s, x)=>s==""?splitString.splice(x, 1):null); //Deleting empty string element of array
+      splitString.forEach((s, x) => s == "" ? splitString.splice(x, 1) : null); //Deleting empty string element of array
 
       for (let i = 0; i < splitString.length; i++) {
 
@@ -60,18 +57,20 @@ export class Task1Component implements OnInit {
       }
 
       if (this.refObjs.length > 0) {
-        this.popup.show();
+        this.popup.show(this.popup.options);
       }
       else {
         this.result = eval(trimmed);
         if (this.result == Infinity || this.result == -Infinity || isNaN(this.result)) {
+          this.flashMessage.show("Zero division is not allowed", { cssClass: 'alert-danger', timeout: 3000 })
           this.result = null;
-          this.flashMessage.show("Zero division is not allowed", { cssClass: 'alert-danger', timeout: 2000 })
+          this.inputString = null;
         }
       }
     }
     else {
-      this.flashMessage.show(this.task1Service.message, { cssClass: 'alert-danger', timeout: 2000 });
+      this.flashMessage.show(this.task1Service.message, { cssClass: 'alert-danger', timeout: 3000 });
+      this.inputString = null;
     }
 
   }
@@ -81,22 +80,23 @@ export class Task1Component implements OnInit {
     let output = this.inputString.replace(/\s/g, '').replace(/\n/g, '').trim();
     this.popup.hide();
 
-    for (let j = 0; j < this.refObjs.length; j++){
+    for (let j = 0; j < this.refObjs.length; j++) {
       output = output.replace(this.refObjs[j].oldValue, this.refObjs[j].value);
     }
-      
+
 
     this.result = eval(output);
 
     if (this.result == Infinity || this.result == -Infinity || isNaN(this.result)) {
       this.result = null;
-      this.flashMessage.show("Zero division is not allowed", { cssClass: 'alert-danger', timeout: 2000 })
+      this.flashMessage.show("Zero division is not allowed", { cssClass: 'alert-danger', timeout: 3000 })
+      this.inputString = null;
     }
   }
 
   cancelEvent() {
     this.popup.hide();
-    this.inputString = "";
+    this.inputString = null;
     this.result = null;
   }
 
