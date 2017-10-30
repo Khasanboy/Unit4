@@ -11,18 +11,23 @@
     </ul>
   </div>
   <div class="col-sm-10">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th></th>
-          <th *ngFor="let currency of currentPeriod.currencies; let i = index">{{currency.code}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let currency of currentPeriod.currencies; let i = index">
-          <td >{{currency.code}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <form class="form-inline">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th></th>
+            <th *ngFor="let currency of currentPeriod.currencies; let i = index">{{currency.code}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let currency of currentPeriod.currencies; let i = index">
+            <th>{{currency.code}}</th>
+            <td *ngIf="currency.isBase">1</td>
+            <td *ngIf="!currency.isBase"><input class="form-control input-sm"  type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]=" currentPeriod.currencies[i].rate"> </td>
+            <td *ngFor="let currency1 of currentPeriod.currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currency, currency1)).toPrecision(3):1}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 </div>
