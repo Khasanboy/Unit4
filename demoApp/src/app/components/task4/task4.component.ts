@@ -47,6 +47,7 @@ class Period{
   id:number;
   title:string;
   currencies:Currency[];
+  rates:number[];
 
   constructor(id, title, currencies){
     this.id = id;

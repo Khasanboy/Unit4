@@ -1,4 +1,4 @@
-<popup>
+<popup id="popup">
   <form class="form-horizontal" #formPopup ="ngForm" (submit)="confirmEvent()" autocomplete="off">
     <div class="form-group" *ngFor="let refObj of refObjs; let idx = index">
       <label class="control-label col-sm-4" for="{{refObj.id}}">Value of {{refObj.oldValue.substring(2)}}</label>
@@ -7,9 +7,9 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-8">
-        <button type="submit" class="btn btn-success" [disabled]="!formPopup.valid">Calculate</button>
-        <button type="button" class="btn btn-default" (click)="cancelEvent()">Cancel</button>
+      <div id="btGroup">
+        <button type="button" style="float:right;  margin:10px" class="btn btn-default" (click)="cancelEvent()">Cancel</button>
+        <button type="submit" style="float:right; margin:10px" class="btn btn-success" [disabled]="!formPopup.valid">Calculate</button>
       </div>
     </div>
   </form>

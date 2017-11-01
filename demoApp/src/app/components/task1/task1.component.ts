@@ -23,7 +23,6 @@ export class Task1Component implements OnInit {
     this.popup.options = {
       header: "Eneter values for accounts",
       color: "#5cb85c",
-      widthProsentage: 40,
       animationDuration: 1,
       showButtons: false,
       animation: "fadeInDown"
