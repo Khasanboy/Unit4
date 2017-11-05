@@ -50,16 +50,16 @@
           <thead>
             <tr>
               <th></th>
-              <th *ngFor="let currency of currentPeriod.currencies; let i = index">{{currency.code}}</th>
+              <th *ngFor="let currency of currencies; let i = index">{{currency.code}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let currency of currentPeriod.currencies; let i = index">
+            <tr *ngFor="let currency of currencies; let i = index">
               <th>{{currency.code}}</th>
               <td *ngIf="currency.isBase">1</td>
               <td *ngIf="!currency.isBase">
-                <input class="form-control input-sm" type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]=" currentPeriod.currencies[i].rate"> </td>
-              <td *ngFor="let currency1 of currentPeriod.currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currency, currency1)).toPrecision(3):1}}</td>
+                <input class="form-control input-sm" type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]="currentPeriod.rates[i]" [ngModelOptions]="{standalone: true}"> </td>
+              <td *ngFor="let currency1 of currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currency, currency1)).toPrecision(3):1}}</td>
             </tr>
           </tbody>
         </table>

@@ -12,7 +12,10 @@ export class Task4Component implements OnInit {
 
   periods:Period[]=[];
   currencies:Currency[] = [];
+  ratesMap;
+
   currentPeriod:Period;
+
 
   constructor() {
    
@@ -21,8 +24,21 @@ export class Task4Component implements OnInit {
   ngOnInit() {
     
     this.currencies = [new Currency(1, "EUR", 1, true), new Currency(2, "USD", 1.16, false),  new Currency(3, "SEK", 1.6, false),  new Currency(4, "GBP", 1.13, false)];
-    let period1 = new Period(1, '2005.01', this.currencies);
-    let period2 = new Period(2, '2005.02', this.currencies);
+     
+    let period1 = new Period(1, '2005.01');
+    let period2 = new Period(2, '2005.02');
+
+
+    /*for(let i = 0; i<this.currencies.length; i++){
+      period1.rates.set(this.currencies[i].code, this.currencies[i].rate);
+      period2.rates.set(this.currencies[i].code, this.currencies[i].rate);
+    }
+    */ 
+    
+    for(let i=0; i<this.currencies.length; i++){
+      period1.rates.push(this.currencies[i].rate);
+      period2.rates.push(this.currencies[i].rate);
+    }
 
     this.periods = [period1, period2];
     this.currentPeriod = period1;
@@ -46,13 +62,14 @@ export class Task4Component implements OnInit {
 class Period{
   id:number;
   title:string;
-  currencies:Currency[];
-  rates:number[];
+  //currencies:Currency[];
+  rates:number[] = [];
+  //rates:Map<string, number>=new Map();
 
-  constructor(id, title, currencies){
+  constructor(id, title){
     this.id = id;
     this.title = title;
-    this.currencies = currencies;
+    //this.currencies = currencies;
   }
 
 }
