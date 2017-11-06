@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FlashMessagesService} from 'angular2-flash-messages';
-import {Task4Service} from '../../services/task4.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Task4Service } from '../../services/task4.service';
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-task4',
@@ -10,80 +11,91 @@ import {Task4Service} from '../../services/task4.service';
 
 export class Task4Component implements OnInit {
 
-  periods:Period[]=[];
-  currencies:Currency[] = [];
-  ratesMap;
+  periods: Period[] = [];
+  currencies: Currency[] = [];
+  newCurrency: Currency;
 
-  currentPeriod:Period;
+  currentPeriod: Period;
 
 
-  constructor() {
-   
-   }
+  constructor(private popup: Popup,
+    private flashMessage: FlashMessagesService) {
+
+    this.popup.options = {
+      header: "Add new currency",
+      color: "#5cb85c",
+      animationDuration: 1,
+      showButtons: false,
+      animation: "fadeInDown"
+    };
+
+  }
 
   ngOnInit() {
-    
-    this.currencies = [new Currency(1, "EUR", 1, true), new Currency(2, "USD", 1.16, false),  new Currency(3, "SEK", 1.6, false),  new Currency(4, "GBP", 1.13, false)];
-     
-    let period1 = new Period(1, '2005.01');
-    let period2 = new Period(2, '2005.02');
 
+    this.currencies = [new Currency(1, "EUR", true), new Currency(2, "USD", false), new Currency(3, "SEK", false), new Currency(4, "GBP", false)];
 
-    /*for(let i = 0; i<this.currencies.length; i++){
-      period1.rates.set(this.currencies[i].code, this.currencies[i].rate);
-      period2.rates.set(this.currencies[i].code, this.currencies[i].rate);
-    }
-    */ 
-    
-    for(let i=0; i<this.currencies.length; i++){
-      period1.rates.push(this.currencies[i].rate);
-      period2.rates.push(this.currencies[i].rate);
-    }
+    let period1 = new Period(1, '2005.01', [1, 1.16, 1.6, 1.13]);
+    let period2 = new Period(2, '2005.02', [1, 1.21, 1.4, 1.18]);
 
     this.periods = [period1, period2];
     this.currentPeriod = period1;
+    this.newCurrency = new Currency(null, null, false);
   }
 
-  setCurrentPeriod(period){
+  setCurrentPeriod(period) {
     this.currentPeriod = period;
     console.log(this.currentPeriod);
   }
 
-  getBaseCurrency(){
-    return this.currencies[1];
+  getBaseCurrency() {
+    return this.currencies[1]; //this is static if we want dynamic it should loop through currencyies and get isBase == true one
   }
 
-  calculateRate(cur1, cur2){
-    return cur1.rate/cur2.rate;
+  calculateRate(cur1, cur2) {
+    return cur1 / cur2;
   }
+
+  addCurrency() {
+    this.popup.show(this.popup.options);
+  }
+
+
+  confirmEvent() {
+    this.popup.hide();
+  }
+
+  cancelEvent() {
+    this.popup.hide();
+    //this.newCurrency = null;
+  }
+
+
 
 }
 
-class Period{
-  id:number;
-  title:string;
-  //currencies:Currency[];
-  rates:number[] = [];
+class Period {
+  id: number;
+  title: string;
+  rates: number[] = [];
   //rates:Map<string, number>=new Map();
 
-  constructor(id, title){
+  constructor(id, title, rates) {
     this.id = id;
     this.title = title;
-    //this.currencies = currencies;
+    this.rates = rates;
   }
 
 }
 
-class Currency{
-  id:number;
-  code:string;
-  rate:number;
-  isBase:boolean;
+class Currency {
+  id: number;
+  code: string;
+  isBase: boolean;
 
-  constructor(id, code, rate, isBase){
+  constructor(id, code, isBase) {
     this.id = id;
     this.code = code;
-    this.rate = rate;
     this.isBase = isBase;
   }
 }

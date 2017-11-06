@@ -1,36 +1,27 @@
+<popup id="popup">
+  <form class="form-horizontal" #formPopup ="ngForm" (submit)="confirmEvent()" autocomplete="off">
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="currencyCode">Currency code</label>
+      <div class="col-sm-4">
+        <input type="text" name="currencyCode" [(ngModel)]="newCurrency.code" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div id="btGroup">
+        <button type="button" style="float:right;  margin:10px" class="btn btn-default" (click)="cancelEvent()">Cancel</button>
+        <button type="submit" style="float:right; margin:10px" class="btn btn-success" [disabled]="!formPopup.valid">Calculate</button>
+      </div>
+    </div>
+  </form>
+</popup>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="#">Action</a>
-                  </li>
-                  <li>
-                    <a href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a href="#">Something else here</a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#">Separated link</a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#">One more separated link</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+      <nav class="navbar nav">
+        <div class="btn-group">
+          <button type="button" (click)="addCurrency()">Add New Currency</button>
+          <button type="button" >Samsung</button>
+          <button type="button">Sony</button>
         </div>
       </nav>
     </div>
@@ -59,7 +50,7 @@
               <td *ngIf="currency.isBase">1</td>
               <td *ngIf="!currency.isBase">
                 <input class="form-control input-sm" type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]="currentPeriod.rates[i]" [ngModelOptions]="{standalone: true}"> </td>
-              <td *ngFor="let currency1 of currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currency, currency1)).toPrecision(3):1}}</td>
+              <td *ngFor="let currency1 of currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currentPeriod.rates[i], currentPeriod.rates[j+1])).toPrecision(3):1}}</td>
             </tr>
           </tbody>
         </table>
