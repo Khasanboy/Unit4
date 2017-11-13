@@ -13,9 +13,10 @@ export class Task4Component implements OnInit {
 
   periods: Period[] = [];
   currencies: Currency[] = [];
-  newCurrency: Currency;
 
+  newCurrency: Currency;
   currentPeriod: Period;
+  tempRates: number[];
 
 
   constructor(private popup: Popup,
@@ -33,14 +34,15 @@ export class Task4Component implements OnInit {
 
   ngOnInit() {
 
-    this.currencies = [new Currency(1, "EUR", true), new Currency(2, "USD", false), new Currency(3, "SEK", false), new Currency(4, "GBP", false)];
+    this.currencies = [new Currency(0, "EUR", true), new Currency(1, "USD", false), new Currency(2, "SEK", false), new Currency(3, "GBP", false)];
 
-    let period1 = new Period(1, '2005.01', [1, 1.16, 1.6, 1.13]);
-    let period2 = new Period(2, '2005.02', [1, 1.21, 1.4, 1.18]);
+    let period1 = new Period(1, '2005.01', [1, 0.86, 1.6, 1.13]);
+    let period2 = new Period(2, '2005.02', [1, 0.70, 1.4, 1.18]);
 
     this.periods = [period1, period2];
     this.currentPeriod = period1;
     this.newCurrency = new Currency(null, null, false);
+    this.tempRates = [];
   }
 
   setCurrentPeriod(period) {
@@ -49,7 +51,7 @@ export class Task4Component implements OnInit {
   }
 
   getBaseCurrency() {
-    return this.currencies[1]; //this is static if we want dynamic it should loop through currencyies and get isBase == true one
+    return this.currencies[0]; //this is static if we want dynamic it should loop through currencyies and get isBase == true one
   }
 
   calculateRate(cur1, cur2) {
@@ -62,15 +64,31 @@ export class Task4Component implements OnInit {
 
 
   confirmEvent() {
+    this.newCurrency = new Currency(this.currencies.length, this.newCurrency.code, false);
+    this.currencies.push(this.newCurrency);
     this.popup.hide();
+    this.newCurrency = new Currency(null, null, false);
+    console.log(this.currencies)
   }
 
   cancelEvent() {
     this.popup.hide();
-    //this.newCurrency = null;
+    this.newCurrency = new Currency(null, null, false);
   }
 
+  copyRates(){
+     this.tempRates = this.currentPeriod.rates;
+  }
 
+  pasteRates(){
+
+    this.currentPeriod.rates = this.tempRates;
+
+  }
+
+  saveChanges(){
+
+  }
 
 }
 

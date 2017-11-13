@@ -20,8 +20,9 @@
       <nav class="navbar nav">
         <div class="btn-group">
           <button type="button" (click)="addCurrency()">Add New Currency</button>
-          <button type="button" >Samsung</button>
-          <button type="button">Sony</button>
+          <button type="button" (click)="copyRates()">Copy rates</button>
+          <button type="button" (click)="pasteRates()">Paste rates</button>
+          <button type="button"(click)="saveChanges()">Save changes</button>
         </div>
       </nav>
     </div>
@@ -49,8 +50,9 @@
               <th>{{currency.code}}</th>
               <td *ngIf="currency.isBase">1</td>
               <td *ngIf="!currency.isBase">
-                <input class="form-control input-sm" type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]="currentPeriod.rates[i]" [ngModelOptions]="{standalone: true}"> </td>
-              <td *ngFor="let currency1 of currencies  | slice:1; let j = index">{{(currency.id!==currency1.id)?(calculateRate(currentPeriod.rates[i], currentPeriod.rates[j+1])).toPrecision(3):1}}</td>
+                <input class="form-control input-sm" type="number" id="{{currency.code}}" name="{{currency.code}}" [(ngModel)]="currentPeriod.rates[i]" [ngModelOptions]="{standalone: true}"> 
+              </td>
+              <td *ngFor="let currency1 of currencies  | slice:1; let j = index">{{(currentPeriod.rates[i] && currentPeriod.rates[j+1])?((currency.id!==currency1.id)?(calculateRate(currentPeriod.rates[i], currentPeriod.rates[j+1])).toPrecision(3):1):''}}</td>
             </tr>
           </tbody>
         </table>
