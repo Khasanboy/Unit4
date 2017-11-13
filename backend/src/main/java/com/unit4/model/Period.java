@@ -2,8 +2,6 @@ package com.unit4.model;
 
 import java.io.Serializable;
 import java.time.YearMonth;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,18 +18,18 @@ public class Period implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private YearMonth period;
+	private YearMonth title;
 	
-	private Set<Currency> currencies;
+	private int rates[];
 
 	public Period() {
 		super();
 	}
 
-	public Period(YearMonth period, Set<Currency> currencies) {
+	public Period(YearMonth title, int rates[]) {
 		super();
-		this.period = period;
-		this.currencies = currencies;
+		this.title = title;
+		this.rates = rates;
 	}
 
 	public Long getId() {
@@ -42,20 +40,20 @@ public class Period implements Serializable {
 		this.id = id;
 	}
 
-	public YearMonth getPeriod() {
-		return period;
+	public YearMonth getTitle() {
+		return title;
 	}
 
-	public void setPeriod(YearMonth period) {
-		this.period = period;
+	public void setTitle(YearMonth title) {
+		this.title = title;
 	}
 
-	public Set<Currency> getCurrencies() {
-		return currencies;
+	public int[] getRates() {
+		return rates;
 	}
 
-	public void setCurrencies(Set<Currency> currencies) {
-		this.currencies = currencies;
+	public void setRates(int[] rates) {
+		this.rates = rates;
 	}
 	
 

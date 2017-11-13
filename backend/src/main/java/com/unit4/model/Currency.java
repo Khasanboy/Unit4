@@ -1,8 +1,8 @@
 package com.unit4.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,20 +19,19 @@ public class Currency implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column
 	private String code;
 	
-	private BigDecimal rate;
-	
+	@Column
 	private boolean isBase;
 
 	public Currency() {
 		super();
 	}
 
-	public Currency(String code, BigDecimal rate, boolean isBase) {
+	public Currency(String code, boolean isBase) {
 		super();
 		this.code = code;
-		this.rate = rate;
 		this.isBase = isBase;
 	}
 
@@ -52,14 +51,6 @@ public class Currency implements Serializable {
 		this.code = title;
 	}
 
-	public BigDecimal getRate() {
-		return rate;
-	}
-
-	public void setRate(BigDecimal rate) {
-		this.rate = rate;
-	}
-
 	public boolean isBase() {
 		return isBase;
 	}
@@ -67,6 +58,7 @@ public class Currency implements Serializable {
 	public void setBase(boolean isBase) {
 		this.isBase = isBase;
 	}
+	
 	
 	
 
