@@ -1,11 +1,14 @@
 package com.unit4.model;
 
 import java.io.Serializable;
-import java.time.YearMonth;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,15 +21,16 @@ public class Period implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private YearMonth title;
+	private Date title;
 	
-	private int rates[];
+	@ManyToOne
+	private List<Rate> rates;
 
 	public Period() {
 		super();
 	}
 
-	public Period(YearMonth title, int rates[]) {
+	public Period(Date title, List<Rate> rates) {
 		super();
 		this.title = title;
 		this.rates = rates;
@@ -40,19 +44,19 @@ public class Period implements Serializable {
 		this.id = id;
 	}
 
-	public YearMonth getTitle() {
+	public Date getTitle() {
 		return title;
 	}
 
-	public void setTitle(YearMonth title) {
+	public void setTitle(Date title) {
 		this.title = title;
 	}
 
-	public int[] getRates() {
+	public List<Rate> getRates() {
 		return rates;
 	}
 
-	public void setRates(int[] rates) {
+	public void setRates(List<Rate> rates) {
 		this.rates = rates;
 	}
 	

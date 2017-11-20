@@ -23,16 +23,16 @@ public class Currency implements Serializable {
 	private String code;
 	
 	@Column
-	private boolean isBase;
+	private boolean isbase;
 
 	public Currency() {
 		super();
 	}
 
-	public Currency(String code, boolean isBase) {
+	public Currency(String code, boolean isbase) {
 		super();
 		this.code = code;
-		this.isBase = isBase;
+		this.isbase = isbase;
 	}
 
 	public Long getId() {
@@ -51,12 +51,12 @@ public class Currency implements Serializable {
 		this.code = title;
 	}
 
-	public boolean isBase() {
-		return isBase;
+	public boolean isbase() {
+		return isbase;
 	}
 
-	public void setBase(boolean isBase) {
-		this.isBase = isBase;
+	public void setBase(boolean isbase) {
+		this.isbase = isbase;
 	}
 	
 	

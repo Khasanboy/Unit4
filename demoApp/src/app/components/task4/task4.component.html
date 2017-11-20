@@ -9,26 +9,24 @@
     <div class="form-group">
       <div id="btGroup">
         <button type="button" style="float:right;  margin:10px" class="btn btn-default" (click)="cancelEvent()">Cancel</button>
-        <button type="submit" style="float:right; margin:10px" class="btn btn-success" [disabled]="!formPopup.valid">Calculate</button>
+        <button type="submit" style="float:right; margin:10px" class="btn btn-success" [disabled]="!formPopup.valid">Add Currency</button>
       </div>
     </div>
   </form>
 </popup>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <nav class="navbar nav">
+    <div id = "toolbar" class="col-sm-12">
         <div class="btn-group">
-          <button type="button" (click)="addCurrency()">Add New Currency</button>
-          <button type="button" (click)="copyRates()">Copy rates</button>
-          <button type="button" (click)="pasteRates()">Paste rates</button>
-          <button type="button"(click)="saveChanges()">Save changes</button>
+          <button type="button" class="btn-success" (click)="addCurrency()">Add New Currency</button>
+          <button type="button"  class="btn-success" (click)="copyRates()">Copy rates</button>
+          <button type="button"  class="btn-success" (click)="pasteRates()">Paste rates</button>
+          <button type="button"  class="btn-default" (click)="saveChanges()">Save changes</button>
         </div>
-      </nav>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-2" style="border:1px solid silver; text-align: center">
+    <div class="col-sm-2" style="border:1px solid silver; text-align: center; padding:0">
       <h4 style="font-weight: bold">Periods</h4>
       <ul>
         <li *ngFor="let period of periods; let i = index">
